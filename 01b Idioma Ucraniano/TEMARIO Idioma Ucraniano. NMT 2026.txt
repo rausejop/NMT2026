@@ -1,0 +1,25 @@
+L01. Introducción: introducción, detalles organizativos, características de prueba
+L02. Fonética, gráficos, ortopedia
+L03. Ortografía. Parte 1
+L04. Ortografía. Parte 2
+L05. Ortografía. Parte 3
+L06. Lexicología
+L07. Fraseología
+L08. Estructura de las palabras. Formación de palabras
+L09. Sustantivo. Parte 1
+L10. Sustantivo. Parte 2
+L11. Adjetivo. Numeral
+L12. Pronombre. Verbo. Adverbio			
+L13. Verbo. Adverbio
+L14. Partes del discurso relacionadas con el servicio. Interjección
+L15. Frases y oraciones. Sujeto y predicado.
+L16. Definición, aplicación, circunstancia. Flexión comparativa.
+L17. Oraciones monosílabas
+L18. Oración simple y compleja. Parte 1
+L19. Oración simple y compleja. Parte 2
+L20. Miembros separados de la oración
+L21. Tipos de oraciones complejas. Oraciones compuestas y complejas (parte 1)
+L22. Tipos de oraciones complejas. Oraciones subordinadas compuestas y complejas (parte 2)
+L23. Oración compleja sin conjunciones. Oración compleja con diferentes tipos de conjunciones.
+L24. Formas de reproducir el habla ajena. Estilística. Desarrollo del habla.
+L25. Modelado de NMT: lección final
