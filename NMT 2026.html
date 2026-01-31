@@ -1,0 +1,794 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Temario NMT Ucrania 2026 - Interactivo</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f9;
+            color: #333;
+        }
+
+        .spa-container {
+            display: flex;
+            min-height: 100vh;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Panel de Navegación (Izquierda) --- */
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            /* Azul oscuro */
+            color: white;
+            padding: 20px 0;
+            flex-shrink: 0;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ecf0f1;
+            font-size: 1.3em;
+            padding: 0 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
+
+        .sidebar button {
+            display: block;
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 5px;
+            border: none;
+            background: none;
+            color: white;
+            text-align: left;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 0;
+            outline: none;
+        }
+
+        .sidebar button:hover {
+            background-color: #34495e;
+        }
+
+        .sidebar button.active {
+            background-color: #e74c3c;
+            /* Rojo para el activo */
+            font-weight: bold;
+            box-shadow: inset 5px 0 0 #c0392b;
+            /* Borde izquierdo de color */
+        }
+
+        /* --- Contenido Principal (Derecha) --- */
+        .content-area {
+            flex-grow: 1;
+            padding: 40px;
+            background-color: white;
+            overflow-y: auto;
+            /* Permite desplazamiento si el contenido es largo */
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .content-section h1 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+
+        .content-section h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos de la lista de temario */
+        .temario-list {
+            list-style: none;
+            /* Quitamos los puntos de lista predeterminados */
+            padding: 0;
+        }
+
+        .temario-list li {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .temario-list li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo para los enlaces (cada punto del temario) */
+        .temario-list li a {
+            text-decoration: none;
+            color: #2980b9;
+            /* Azul de enlace */
+            font-weight: 600;
+            display: block;
+        }
+
+        .temario-list li a:hover {
+            color: #c0392b;
+            /* Rojo al pasar el ratón */
+            text-decoration: underline;
+        }
+
+        /* Animación */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            border-left: 4px solid #f39c12;
+            background-color: #fef0db;
+            color: #d35400;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="spa-container">
+        <!-- Panel de Botones (Sidebar) -->
+        <div class="sidebar">
+            <h2>Examen NMT 2026 🇺🇦</h2>
+            <button id="btn-ucraniana" data-target="ucraniana" class="active">🗣️ Lengua Ucraniana</button>
+            <button id="btn-matematica" data-target="matematica">📐 Matemática</button>
+            <button id="btn-historia" data-target="historia">📜 Historia de Ucrania</button>
+            <button id="btn-biologia" data-target="biologia">🧬 Biología</button>
+        </div>
+
+        <!-- Área de Contenido -->
+        <div class="content-area">
+
+            <!-- Contenido de Bienvenida (Se oculta al hacer clic) -->
+            <div id="bienvenida" class="content-section">
+                <h1>Bienvenido al Temario NMT 2026 Interactivo</h1>
+                <p>Selecciona una asignatura a la izquierda. Cada punto del temario en el panel derecho está vinculado a
+                    un video educativo (¡Haz clic!).</p>
+                <div class="disclaimer">
+                    ⚠️ **Nota:** El temario se basa en convocatorias previas. Los enlaces a YouTube son ejemplos y deben
+                    ser verificados por el usuario para su estudio oficial.
+                </div>
+            </div>
+
+            <!-- Lengua Ucraniana -->
+            <div id="ucraniana" class="content-section">
+                <h3>🗣️ Temario: Lengua Ucraniana (Con Enlaces a Vídeos)</h3>
+                <ul class="temario-list">
+                    <li>
+                        <a href="https://www.youtube.com/playlist?list=PLH1iFGL1sy5j7zBs5bDgQLVmgxUuClkCi"
+                            target="_blank">
+                            Unidad 0: НМТ-2025. Curso Completo
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=JMYW6GMSsUg" target="_blank">
+                            Unidad 1:НМТ 2025. Українська мова. Вебінар 1. Вступ: знайомство, організаційні деталі,
+                            особливості тесту
+                            <br>Unidad 1: NMT 2025. Idioma ucraniano. Seminario web 1. Introducción: presentación,
+                            detalles organizativos, características de la prueba
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/zzaAUQJuDm8" target="_blank">
+                            Unidad 2: НМТ 2025. Українська мова. Вебінар 2. Фонетика, графіка, орфоепія
+                            <br>Unidad 2: NMT 2025. Idioma ucraniano. Seminario web 2. Fonética, gráficos, ortografía
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/5HflyPoYrGo" target="_blank">
+                            Unidad 3: НМТ 2025. Українська мова. Вебінар 3. Орфографія. Частина 1
+                            <br>Unidad 3: NMT 2025. Idioma ucraniano. Seminario web 3. Ortografía. Parte 1
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/Y1BFdH_3RIU" target="_blank">
+                            Unidad 4: НМТ 2025. Українська мова. Вебінар 4. Орфографія. Частина 2
+                            <br>Unidad 4: NMT 2025. Idioma ucraniano. Seminario web 4. Ortografía. Parte 2
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/RkxFqkNK5n0" target="_blank">
+                            Unidad 5: НМТ 2025. Українська мова. Вебінар 5. Орфографія. Частина 3
+                            <br>Unidad 5: NMT 2025. Idioma ucraniano. Seminario web 5. Ortografía. Parte 3
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/M9yFIiZe7W0" target="_blank">
+                            Unidad 6: НМТ 2025. Українська мова. Вебінар 6. Лексикологія
+                            <br>Unidad 6: NMT 2025. Idioma ucraniano. Seminario web 6. Lexicología
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=8o3QHg6UhSM" target="_blank">
+                            Unidad 7: НМТ 2025. Українська мова. Вебінар 7. Фразеологія
+                            <br>Unidad 7: NMT 2025. Idioma ucraniano. Seminario web 7. Fraseología
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=5EmCyc1EDJY" target="_blank">
+                            Unidad 8: НМТ 2025. Українська мова. Вебінар 8. Будова слова. Словотвір
+                            <br>Unidad 8: NMT 2025. Idioma ucraniano. Seminario web 8. Estructura de las palabras.
+                            Formación de palabras
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=ih7oKazdFPA" target="_blank">
+                            Unidad 9: НМТ 2025. Українська мова. Вебінар 9. Іменник. Частина 1
+                            <br>Unidad 9: NMT 2025. Idioma ucraniano. Seminario web 9. Sustantivo. Parte 1
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=PpfjDBL4f-s" target="_blank">
+                            Unidad 10: НМТ 2025. Українська мова. Вебінар 10. Іменник. Частина 2
+                            <br>Unidad 10: NMT 2025. Idioma ucraniano. Seminario web 10. Sustantivo. Parte 2
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=9hs3Ml5A4fo" target="_blank">
+                            Unidad 11: НМТ 2025. Українська мова. Вебінар 11. Прикметник. Числівник
+                            <br>Unidad 11: NMT 2025. Idioma ucraniano. Seminario web 11. Adjetivo. Numeral
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=Gm69SaNcz9A" target="_blank">
+                            Unidad 12: НМТ 2025. Українська мова. Вебінар 12. Займенник. Дієслово. Прислівник
+                            <br>Unidad 12: NMT 2025. Idioma ucraniano. Seminario web 12. Pronombre. Verbo. Adverbio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=JwjqubE_9DI" target="_blank">
+                            Unidad 13: НМТ 2025. Українська мова. Вебінар 13. Дієприкметник. Дієприслівник
+                            <br>Unidad 13: NMT 2025. Idioma ucraniano. Seminario web 13. Participio. Adverbio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=Eery7gxVK7Q" target="_blank">
+                            Unidad 14: НМТ 2025. Українська мова. Вебінар 14. Службові частини мови. Вигук
+                            <br>Unidad 14: NMT 2025. Idioma ucraniano. Seminario web 14. Partes de la oración de
+                            servicio. Interjección
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=qmkikhHPkZs" target="_blank">
+                            Unidad 15: НМТ 2025. Українська мова. Вебінар 15. Словосполучення й речення. Підмет й
+                            присудок
+                            <br>Unidad 15: NMT 2025. Idioma ucraniano. Seminario web 15. Frases y oraciones. Sujeto y
+                            predicado
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=qmGfvIc0Q9U" target="_blank">
+                            Unidad 16: НМТ 2025. Українська мова. Вебінар 16. Означення, додаток, обставина.
+                            Порівняльний зворот
+                            <br>Unidad 16: NMT 2025. Idioma ucraniano. Seminario web 16. Definición, aplicación,
+                            contexto. Giro comparativo
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=1KtmR2fipG0" target="_blank">
+                            Unidad 17: НМТ 2025. Українська мова. Вебінар 17. Односкладні речення
+                            <br>Unidad 17: NMT 2025. Idioma ucraniano. Seminario web 17. Oraciones monosilábicas
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=nFvSs8CtkBk" target="_blank">
+                            Unidad 18: НМТ 2025. Українська мова. Вебінар 18. Просте ускладнене речення. Частина 1
+                            <br>Unidad 18: NMT 2025. Idioma ucraniano. Seminario web 18. Oración simple y compleja.
+                            Parte 1
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=yqrNxA9_nsk" target="_blank">
+                            Unidad 19: НМТ 2025. Українська мова. Вебінар 19. Просте ускладнене речення. Частина 2
+                            <br>Unidad 19: NMT 2025. Idioma ucraniano. Seminario web 19. Oración simple y compleja.
+                            Parte 2
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=_ozyoomjhkc" target="_blank">
+                            Unidad 20: НМТ 2025. Українська мова. Вебінар 20. Відокремлені члени речення
+                            <br>Unidad 20: NMT 2025. Idioma ucraniano. Seminario web 20. Elementos de la oración
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=efmSgoOa3CQ" target="_blank">
+                            Unidad 21: НМТ 2025. Українська мова. В21. Типи складних речень. Складносурядне та
+                            складнопідрядне речення. Ч1
+                            <br>Unidad 21: NMT 2025. Idioma ucraniano. B21. Tipos de oraciones complejas. Oraciones
+                            compuestas y complejas. Parte 1
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=BUXMppthwRA target=" _blank">
+                            Unidad 22: НМТ 2025. Українська мова. В22. Типи складних речень. Складносурядне та
+                            складнопідрядне речення. Ч2
+                            <br>Unidad 22: NMT 2025. Idioma ucraniano. B22. Tipos de oraciones complejas. Oraciones
+                            compuestas y complejas. Parte 2
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=3BaWClgqMWM" target="_blank">
+                            Unidad 23: НМТ 2025. Українська мова. Вeбінар 23. Безсполучникове складне речення
+                            <br>Unidad 23: NMT 2025. Idioma ucraniano. Seminario web 23. Oración compleja sin conjunción
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=SQCN6HVpp1c" target="_blank">
+                            Unidad 24: НМТ 2025. Українська мова. В24. Способи відтворення чужого мовлення. Стилістика.
+                            Розвиток мовлення
+                            <br>Unidad 24: NMT 2025. Idioma ucraniano. B24. Formas de reproducir el habla extranjera.
+                            Estilística. Desarrollo del habla
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=1oP_nFvEmrI" target="_blank">
+                            Unidad 25: НМТ 2025. Українська мова. Вeбінар 25. Моделювання НМТ: фінальне заняття
+                            <br>Unidad 25: NMT 2025. Idioma ucraniano. Seminario web 25. Modelado de NMT: lección final
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Matemática -->
+            <div id="matematica" class="content-section">
+                <h3>📐 Temario: Matemática (Con Enlaces a Vídeos)</h3>
+                <ul class="temario-list">
+                    <li>
+                        <a href="https://www.youtube.com/live/iRvvFVIJUjI" target="_blank">
+                            Unidad 1: НМТ 2025. Математика. Вебінар 25. Підсумки. Генеральна репетиція
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Historia de Ucrania -->
+            <div id="historia" class="content-section">
+                <h3>📜 Temario: Historia de Ucrania (Con Enlaces a Vídeos)</h3>
+                <ul class="temario-list">
+                    <li>
+                        <a href="https://www.youtube.com/live/eyAhiGNtqII" target="_blank">
+                            Unidad 1: НМТ 2025. Історія України. Вебінар 1. Вступ. Стародавня історія України
+                            <br>Unidad 1: NMT 2025. Historia de Ucrania. Seminario web 1. Introducción. Historia antigua
+                            de Ucrania
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/1JYDceiOEfQ" target="_blank">
+                            Unidad 2: НМТ 2025. Історія України. Вебінар 2. Русь-Україна (Київська держава)
+                            <br>Unidad 2: NMT 2025. Historia de Ucrania. Seminario web 2. Rus-Ucrania (Estado de Kiev)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/zGVfLJlbfTw" target="_blank">
+                            Unidad 3: НМТ 2025. Історія України. В.3. Королівство Руське (Галицько-Волинська держава).
+                            Монгольська навала
+                            <br>Unidad 3: NMT 2025. Historia de Ucrania. B.3. Reino de Rus (Estado de Galicia-Volinia).
+                            Invasión mongola
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/RPED5uZP8Ac" target="_blank">
+                            Unidad 4: НМТ 2025. Історія України. Вебінар 4. Руські удільні князівства у складі іноземних
+                            держав
+                            <br>Unidad 4: NMT 2025. Historia de Ucrania. Seminario web 4. Los principados de Rus como
+                            parte de estados extranjeros
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/J4PiVWjButE" target="_blank">
+                            Unidad 5: НМТ 2025. Історія України. В.5. Укр.землі у складі Речі Посполитої в ІІ пол. XVI
+                            ст – І пол. XVII ст
+                            <br>Unidad 5: NMT 2025. Historia de Ucrania. B.5. Los territorios ucranianos como parte de
+                            la Mancomunidad Polaco-Lituana en la segunda mitad del siglo XVI - primera mitad del siglo
+                            XVII
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/PsuS7vS1wkI" target="_blank">
+                            Unidad 6: НМТ 2025. Історія України. Вебінар 6. Національно-визвольна війна українського
+                            народу сер. XVII ст
+                            <br>Unidad 6: NMT 2025. Historia de Ucrania. Seminario web 6. Guerra de Liberación Nacional
+                            del Pueblo Ucraniano a mediados del siglo XVII
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/ziyqKLLg12Y" target="_blank">
+                            Unidad 7: НМТ 2025. Історія України. Вебінар 7. Козацька Україна наприкінці 50-80-х рр. XVII
+                            ст.
+                            <br>Unidad 7: NMT 2025. Historia de Ucrania. Seminario web 7. La Ucrania cosaca a finales de
+                            los años 50 y 80 del siglo XVII.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/lzn4yX7wY8M" target="_blank">
+                            Unidad 8: НМТ 2025. Історія України. Вебінар 8. Українські землі наприкінці XVII – в І пол.
+                            XVIII ст.
+                            <br>Unidad 8: NMT 2025. Historia de Ucrania. Seminario web 8. Los territorios ucranianos a
+                            finales del siglo XVII y la primera mitad del siglo XVIII.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/YltDD58EYlQ" target="_blank">
+                            Unidad 9: НМТ 2025. Історія України. В9. Укр.землі у складі Рос.імперії наприкінці XVIII – в
+                            І пол. XIX ст
+                            <br>Unidad 9: NMT 2025. Historia de Ucrania. Seminario web 9. Los territorios ucranianos
+                            como parte del Imperio ruso a finales del siglo XVIII y la primera mitad del siglo XIX.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/_pXsnal5W0s" target="_blank">
+                            Unidad 10: НМТ 2025. Історія України. В10. Укр.землі у складі Австр.імперії наприкінці XVIII
+                            – в І пол. XIX ст.
+                            <br>Unidad 10: NMT 2025. Historia de Ucrania. Seminario web 10. Los territorios ucranianos
+                            como parte del Imperio austríaco a finales del siglo XVIII y la primera mitad del siglo XIX.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/j7f9mIfArXw" target="_blank">
+                            Unidad 11: НМТ 2025. Історія України. В11. Українські землі у складі Російської імперії в ІІ
+                            пол. XIX ст.
+                            <br>Unidad 11: NMT 2025. Historia de Ucrania. Seminario web 11. Los territorios ucranianos
+                            como parte del Imperio ruso en la segunda mitad del siglo XIX.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/8sdVeWp4J7I" target="_blank">
+                            Unidad 12: НМТ 2025. Історія України. Вебінар 12. Українські землі у складі Австро-Угорщини
+                            в ІІ пол. XIX ст.
+                            <br>Unidad 12: NMT 2025. Historia de Ucrania. Seminario web 12. Los territorios ucranianos
+                            como parte de Austria-Hungría en la segunda mitad del siglo XIX.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/mr-hkkvuQNQ" target="_blank">
+                            Unidad 13: НМТ 2025. Історія України. Вебінар 13. Повторення
+                            <br>Unidad 13: NMT 2025. Historia de Ucrania. Seminario web 13. Repetición.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/rk5N3EQi5Ms" target="_blank">
+                            Unidad 14: НМТ 2025. Історія України. В14. Укр. землі у складі Рос.імперії та
+                            Австро-Угорщини в 1900-1914 рр.
+                            <br>Unidad 14: NMT 2025. Historia de Ucrania. B14. Los territorios ucranianos como parte del
+                            Imperio ruso y Austria-Hungría entre 1900 y 1914.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/94a1gNfkSNc" target="_blank">
+                            Unidad 15: НМТ 2025. Історія України. В15. Україна в роки Першої світової війни. Початок
+                            Української революції
+                            <br>Unidad 15: NMT 2025. Historia de Ucrania. B15. Ucrania durante la Primera Guerra
+                            Mundial. El inicio de la Revolución ucraniana.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/zkJkngfiINM" target="_blank">
+                            Unidad 16: НМТ 2025. Історія України. В16.Розгортання Української революції.Боротьба за
+                            відновлення державності
+                            <br>Unidad 16: NMT 2025. Historia de Ucrania. B16. El desarrollo de la Revolución ucraniana.
+                            La lucha por la restauración de la estatalidad.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/l8qtJr6wSmo" target="_blank">
+                            Unidad 17: НМТ 2025. Історія України. Вебінар 17. Встановлення комуністичного тоталітарного
+                            режиму в Україні
+                            <br>Unidad 17: NMT 2025. Historia de Ucrania. Seminario web 17. El establecimiento de un
+                            régimen totalitario comunista en Ucrania
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/5y6Ic8V7_4Q" target="_blank">
+                            Unidad 18: НМТ 2025. Історія України. Вебінар 18. Утвердження більшовицького тоталітарного
+                            режиму в Україні
+                            <br>Unidad 18: NMT 2025. Historia de Ucrania. Seminario web 18. El establecimiento del
+                            régimen totalitario bolchevique en Ucrania
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/EuRRQIVeJ1U" target="_blank">
+                            Unidad 19: ННМТ 2025. Історія України. Вебінар 19. Західноукраїнські землі в міжвоєнний
+                            період
+                            <br>Unidad 19: NMT 2025. Historia de Ucrania. Seminario web 19. Los territorios de Ucrania
+                            occidental en el período de entreguerras
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/BFJnsppoCt8" target="_blank">
+                            Unidad 20: НМТ 2025. Історія України. Вебінар 20. Україна в роки Другої світової війни
+                            <br>Unidad 20: NMT 2025. Historia de Ucrania. Seminario web 20. Ucrania durante la Segunda
+                            Guerra Mundial
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/f4qt5CTTeyg" target="_blank">
+                            Unidad 21: НМТ 2025. Історія України. Вебінар 21. Україна в перші повоєнні роки.Україна в
+                            умовах десталінізації
+                            <br>Unidad 21: NMT 2025. Historia de Ucrania. Seminario web 21. Ucrania en los primeros años
+                            de la posguerra. Ucrania en el contexto de la desestalinización
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/tFtYhzzNZtg" target="_blank">
+                            Unidad 22: НМТ 2025. Історія України. В22. Україна в період загострення кризи радянської
+                            системи. Незалежність
+                            <br>Unidad 22: NMT 2025. Historia de Ucrania. B22. Ucrania durante el período de
+                            agravamiento de la crisis del sistema soviético. Independencia
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/VoSANS1lU3M" target="_blank">
+                            Unidad 23: НМТ 2025. Історія України. В23. Становлення України як незалежної держави.
+                            Творення нової України
+                            <br>Unidad 23: NMT 2025. Historia de Ucrania. B23. La formación de Ucrania como Estado
+                            independiente. Creación de una nueva Ucrania
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/live/7n4auoCKpZU" target="_blank">
+                            Unidad 24: НМТ 2025. Історія України. В24. Повторення. Тести по ХХ століттю
+                            <br>Unidad 24: NMT 2025. Historia de Ucrania. B24. Repetición. Pruebas sobre el siglo XX
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Biología -->
+            <div id="biologia" class="content-section">
+                <h3>🧬 Temario: Biología (Con Enlaces a Vídeos)</h3>
+                <ul class="temario-list">
+                    <li>
+                        <a href="https://www.youtube.com/playlist?list=PLH1iFGL1sy5gtx154BU6rDLhmLXVySPvf"
+                            target="_blank">
+                            Unidad 0: НМТ-2024. Curso Completo
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=iwgmJjEO9g0" target="_blank">
+                            Unidad 1: НМТ-2024. Біологія. Вебінар 1. Хімічний склад клітини
+                            <br>Unidad 1: NMT-2024. Biología. Seminario web 1. Composición química de la célula
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=o40iVQflTTw" target="_blank">
+                            Unidad 2: НМТ-2024. Біологія. Вебінар 2. Структура та функціонування еукаріотичних клітин
+                            <br>Unidad 2: NMT-2024. Biología. Seminario web 2. Estructura y funcionamiento de las
+                            células eucariotas.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=Xygtw8bQllI" target="_blank">
+                            Unidad 3: НМТ-2024. Біологія. Вебінар 3. Збереження та реалізація спадкової інформації
+                            <br>Unidad 3: NMT-2024. Biología. Seminario web 3. Preservación e implementación de la
+                            información hereditaria
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=KLkQGfTzsfE" target="_blank">
+                            Unidad 4: НМТ 2025. Українська мова. Вебінар 4. Орфографія. Частина 2
+                            <br>Unidad 4: NMT-2024. Biología. Seminario web 4. Patrones de herencia y variabilidad.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=TI2LhOeX3Ms" target="_blank">
+                            Unidad 5: НМТ-2024. Біологія. Вебінар 5. Біорізноманіття. Віруси. Прокаріоти
+                            <br>Unidad 5: NMT-2024. Biología. Seminario web 5. Biodiversidad. Virus. Procariotas.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=lhKZNhWo6XA" target="_blank">
+                            Unidad 6: НМТ-2024. Біологія. Вебінар 6. Біорізноманіття. Рослини. Гриби
+                            <br>Unidad 6: NMT-2024. Biología. Seminario web 6. Biodiversidad. Plantas. Hongos.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=w7oF2ikoLrU" target="_blank">
+                            Unidad 7: НМТ-2024. Біологія. Вебінар 7. Біорізноманіття. Тварини
+                            <br>Unidad 7: NMT-2024. Biología. Seminario web 7. Biodiversidad. Animales
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=Jm11CRb7juk" target="_blank">
+                            Unidad 8: НМТ-2024. Біологія. Вебінар 8. Біологія людини. Регуляторні системи
+                            <br>Unidad 8: NMT-2024. Biología. Seminario web 8. Biología humana. Sistemas reguladores.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=-ZYZwEP9TLM" target="_blank">
+                            Unidad 9: НМТ 2025. Українська мова. Вебінар 9. Іменник. Частина 1
+                            <br>Unidad 9: NMT-2024. Biología. Seminario web 9. Biología humana. Sistemas viscerales.
+                            Parte 1
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=JIe0qAlfKQI" target="_blank">
+                            Unidad 10: НМТ 2025. Українська мова. Вебінар 10. Іменник. Частина 2
+                            <br>Unidad 10: NMT-2024. Biología. Seminario web 10. Biología humana. Sistemas viscerales.
+                            Parte 2
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=9hs3Ml5A4fo" target="_blank">
+                            Unidad 11: НМТ 2025. Українська мова. Вебінар 11. Прикметник. Числівник
+                            <br>Unidad 11: NMT 2025. Idioma ucraniano. Seminario web 11. Adjetivo. Numeral
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=Gm69SaNcz9A" target="_blank">
+                            Unidad 12: НМТ 2025. Українська мова. Вебінар 12. Займенник. Дієслово. Прислівник
+                            <br>Unidad 12: NMT 2025. Idioma ucraniano. Seminario web 12. Pronombre. Verbo. Adverbio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=JwjqubE_9DI" target="_blank">
+                            Unidad 13: НМТ 2025. Українська мова. Вебінар 13. Дієприкметник. Дієприслівник
+                            <br>Unidad 13: NMT 2025. Idioma ucraniano. Seminario web 13. Participio. Adverbio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=Eery7gxVK7Q" target="_blank">
+                            Unidad 14: НМТ 2025. Українська мова. Вебінар 14. Службові частини мови. Вигук
+                            <br>Unidad 14: NMT 2025. Idioma ucraniano. Seminario web 14. Partes de la oración de
+                            servicio. Interjección
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=qmkikhHPkZs" target="_blank">
+                            Unidad 15: НМТ 2025. Українська мова. Вебінар 15. Словосполучення й речення. Підмет й
+                            присудок
+                            <br>Unidad 15: NMT 2025. Idioma ucraniano. Seminario web 15. Frases y oraciones. Sujeto y
+                            predicado
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=qmGfvIc0Q9U" target="_blank">
+                            Unidad 16: НМТ 2025. Українська мова. Вебінар 16. Означення, додаток, обставина.
+                            Порівняльний зворот
+                            <br>Unidad 16: NMT 2025. Idioma ucraniano. Seminario web 16. Definición, aplicación,
+                            contexto. Giro comparativo
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=1KtmR2fipG0" target="_blank">
+                            Unidad 17: НМТ 2025. Українська мова. Вебінар 17. Односкладні речення
+                            <br>Unidad 17: NMT 2025. Idioma ucraniano. Seminario web 17. Oraciones monosilábicas
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=nFvSs8CtkBk" target="_blank">
+                            Unidad 18: НМТ 2025. Українська мова. Вебінар 18. Просте ускладнене речення. Частина 1
+                            <br>Unidad 18: NMT 2025. Idioma ucraniano. Seminario web 18. Oración simple y compleja.
+                            Parte 1
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=yqrNxA9_nsk" target="_blank">
+                            Unidad 19: НМТ 2025. Українська мова. Вебінар 19. Просте ускладнене речення. Частина 2
+                            <br>Unidad 19: NMT 2025. Idioma ucraniano. Seminario web 19. Oración simple y compleja.
+                            Parte 2
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=_ozyoomjhkc" target="_blank">
+                            Unidad 20: НМТ 2025. Українська мова. Вебінар 20. Відокремлені члени речення
+                            <br>Unidad 20: NMT 2025. Idioma ucraniano. Seminario web 20. Elementos de la oración
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=efmSgoOa3CQ" target="_blank">
+                            Unidad 21: НМТ 2025. Українська мова. В21. Типи складних речень. Складносурядне та
+                            складнопідрядне речення. Ч1
+                            <br>Unidad 21: NMT 2025. Idioma ucraniano. B21. Tipos de oraciones complejas. Oraciones
+                            compuestas y complejas. Parte 1
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=BUXMppthwRA target=" _blank">
+                            Unidad 22: НМТ 2025. Українська мова. В22. Типи складних речень. Складносурядне та
+                            складнопідрядне речення. Ч2
+                            <br>Unidad 22: NMT 2025. Idioma ucraniano. B22. Tipos de oraciones complejas. Oraciones
+                            compuestas y complejas. Parte 2
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=3BaWClgqMWM" target="_blank">
+                            Unidad 23: НМТ 2025. Українська мова. Вeбінар 23. Безсполучникове складне речення
+                            <br>Unidad 23: NMT 2025. Idioma ucraniano. Seminario web 23. Oración compleja sin conjunción
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=SQCN6HVpp1c" target="_blank">
+                            Unidad 24: НМТ 2025. Українська мова. В24. Способи відтворення чужого мовлення. Стилістика.
+                            Розвиток мовлення
+                            <br>Unidad 24: NMT 2025. Idioma ucraniano. B24. Formas de reproducir el habla extranjera.
+                            Estilística. Desarrollo del habla
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=1oP_nFvEmrI" target="_blank">
+                            Unidad 25: НМТ 2025. Українська мова. Вeбінар 25. Моделювання НМТ: фінальне заняття
+                            <br>Unidad 25: NMT 2025. Idioma ucraniano. Seminario web 25. Modelado de NMT: lección final
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuración para simular la lógica de una SPA
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarButtons = document.querySelectorAll('.sidebar button');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            // Función para cambiar de sección
+            function showContent(targetId) {
+                // Desactivar botones
+                sidebarButtons.forEach(btn => btn.classList.remove('active'));
+
+                // Ocultar todas las secciones
+                contentSections.forEach(section => section.classList.remove('active'));
+
+                // Activar el botón y la sección correspondiente
+                const targetButton = document.querySelector(`[data-target="${targetId}"]`);
+                const targetSection = document.getElementById(targetId);
+
+                if (targetButton) {
+                    targetButton.classList.add('active');
+                }
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+            }
+
+            // Asignar listeners a los botones
+            sidebarButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    showContent(this.dataset.target);
+                });
+            });
+
+            // Inicialización: Muestra el contenido de la primera asignatura por defecto
+            showContent('ucraniana');
+        });
+    </script>
+
+</body>
+
+</html>
